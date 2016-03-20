@@ -76,7 +76,28 @@ str = "помилка"
 |Визначення довжини рядка|
 | size_t strlen(char *str); |  Визначення довжини рядка |
 |Копіювання рядка  |
-| char *strcpy(char *str1, const char *str2); | Копіювання рядка str2 у рядок str1 |
+| `errno_t strcpy_s(char * strDestination, size_t numberOfElements, const char *strSource);` | Копіювання рядка strSource у рядок strDestination,  розміром numberOfElements |
+| `errno_t strncpy_s(char *strDest, size_t numberOfElements, const char *strSource, size_t count);` | Копіювання count перших символів рядка strSource у рядок strDest,  розміром numberOfElements |
+| `char *_strdup(const char *strSource);` | Дублювання рядка strSource |
+|Об'єднання (конкатенація) рядків  |
+| `errno_t strcat_s(char *strDestination, size_t numberOfElements, const char *strSource);` | Склеювання рядків strDestination і strSource у рядок strDestination, розміром numberOfElements |
+| `errno_t strncat_s(char *strDest, size_t numberOfElements, const char *strSource, size_t count);` | Додавання до рядка strDest count символів рядка  strSource,  розміром numberOfElements |
+|Порівняння рядків |
+| `int strcmp(const char *string1, const char *string2);` | Порівняння рядків string1 і string2 |
+| `int _stricmp(const char *string1, const char *string2);` | Порівняння рядків string1 і string2 без урахування регістра |
+| `int strncmp(const char *string1, const char *string2, size_t count);` | Порівняння перших  count  символів рядків string1 і string2 |
+| `int strnicmp(const char *string1, const char *string2, size_t count);` | Порівняння перших  count  символів рядків string1 і string2 без урахування регістра |
+|Пошук у рядку |
+| `char *strchr(const char *str, int c);` | Пошук першого входження символа с у рядок  str |
+| `char *strrchr(const char *str, int c);` | Пошук останнього входження символа с у рядок str |
+| `char *strstr(const char *str, const char *strSearch);` | Пошук першого входження підрядка strSearch у рядок str |
+| `char *strtok_s(char *strToken, const char *strDelimit, char **context);` | Визначення в рядку strToken лексем, описаних у рядку роздільників strDelimit, context зберігає залишок рядока між викликами strtok_s|
+|Перетворення рядка |
+| `errno_t _strlwr_s(char *str, size_t numberOfElements);` | Приведення символів рядка str до нижнього регістру, розміром numberOfElements |
+| `errno_t _strupr_s(char *str, size_t numberOfElements);` | Приведення символів рядка str до верхнього регістру, розміром numberOfElements |
+| `errno_t _strset_s(char *str, size_t numberOfElements, int c );` | Заміна усіх символів у рядку str, розміром  numberOfElements на символ с |
+| `errno_t _strnset_s(char *str, size_t numberOfElements, int c, size_t count);` | Заміна перших count символів у рядку str, розміром  numberOfElements на символ с |
+| `char *_strrev (char *str);` | Інвертування рядка str |
 
 ## Вимоги до програми
 
