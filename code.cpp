@@ -33,3 +33,15 @@ int main()
     return 0;
 }
 
+int Words(char str[], Array mas) {
+	int k = 0;
+	char *delimiter = " ";
+	char *p, *l;
+	p = strtok_s(str, delimiter, &l);
+	while (p != NULL) {
+		strcpy_s(mas[k], p);
+		k++;
+		p = strtok_s(NULL, delimiter, &l);
+	}
+	return k;
+}
