@@ -45,3 +45,27 @@ int Words(char str[], Array mas) {
 	}
 	return k;
 }
+
+void Palindrom(Array mas, int k) {
+	bool b;
+	int amount = 0;
+	cout << "All the Palindroms in the string:" << endl;
+	for (int j = 0; j < k; j++) {
+		int l = strlen(mas[j]);
+		for (int g = 0; g < l / 2; g++) {
+			if (tolower(mas[j][g]) == tolower(mas[j][l - 1 - g])) {
+				b = true;
+				continue;
+			}
+			else {
+				b = false;
+				break;
+			}
+		}
+		if (b) {
+			cout << mas[j] << endl;
+			amount++;
+		}
+	}
+	cout << "Amount of Palindroms: " << amount;
+}
