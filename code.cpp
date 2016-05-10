@@ -15,57 +15,43 @@ char s[100];
 const int n = 20;
 typedef char Array[n][n];
 
-int Words(char[], Array);
-void Palindrom(Array, int);
+void Palindrom(char[]);
 
 
 int main()
 {
-	Array arr;
-	int i = 0;
+
 	puts("Enter string:");
 	gets_s(s);
 	cout << endl << endl;
-	i = Words(s, arr);
-	Palindrom(arr, i);
-
+	Palindrom(s);
 	_getch();
-    return 0;
+	return 0;
 }
-
-int Words(char str[], Array mas) {
-	int k = 0;
-	char *delimiter = " ";
-	char *p, *l;
-	p = strtok_s(str, delimiter, &l);
-	while (p != NULL) {
-		strcpy_s(mas[k], p);
-		k++;
-		p = strtok_s(NULL, delimiter, &l);
-	}
-	return k;
-}
-
-void Palindrom(Array mas, int k) {
-	bool b;
+void Palindrom(char str[]) {
 	int amount = 0;
-	cout << "All the Palindroms in the string:" << endl;
-	for (int j = 0; j < k; j++) {
-		int l = strlen(mas[j]);
-		for (int g = 0; g < l / 2; g++) {
-			if (tolower(mas[j][g]) == tolower(mas[j][l - 1 - g])) {
+	char *delimiter = " ";
+	char *p, *t;
+	bool b;
+	p = strtok_s(str, delimiter, &t);
+	while (p != NULL) {
+		int l = strlen(p);
+		for (int j = 0; j < l / 2; j++) {
+			if (tolower(p[j]) == tolower(p[l - 1 - j])) {
 				b = true;
-				continue;
 			}
 			else {
 				b = false;
 				break;
 			}
 		}
+
 		if (b) {
-			cout << mas[j] << endl;
 			amount++;
+			cout << amount << ") " << p << endl;
 		}
+
+		p = strtok_s(NULL, delimiter, &t);
 	}
 	cout << "Amount of Palindroms: " << amount;
 }
